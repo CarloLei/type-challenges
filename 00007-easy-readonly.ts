@@ -19,3 +19,14 @@ interface Todo1 {
 type MyReadonly<T> = {
   readonly [K in keyof T]: T[K]
 }
+
+// ============= JS Code =============
+function MyReadonlyJS (obj) {
+  let result = {};
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      result["readonly " + key]= obj[key];
+    }
+  }
+  return result
+}
